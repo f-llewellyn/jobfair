@@ -3,6 +3,7 @@ const JobListing = require("../../models/JobListing")
 
 const router = Router()
 
+// Get all listings
 router.get("/", async(req, res) => {
     try {
         const jobListings = await JobListing.find()
@@ -13,6 +14,20 @@ router.get("/", async(req, res) => {
     }
 })
 
+//  Get specific Listing
+router.get("/:id", async (req, res) => {
+    const { id } = req.params
+
+    try {
+        const jobListings = await JobListing.findById(id)
+        if (!jobListings) throw new Error('Sorry, we could not find that listing')
+        res.status(200).json(jobListings)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
+// Post a Listing
 router.post('/', async (req, res) => {
     const newJobListing = new JobListing(req.body)
     try {
