@@ -5,6 +5,7 @@ const cors = require("cors")
 const morgan = require("morgan")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
+const jobListingRoutes = require('./routes/api/jobListings')
 // Import PORT and mongoUri env variables
 const { PORT, mongoUri } = require("./config")
 
@@ -19,6 +20,8 @@ mongoose
     .connect(mongoUri)
     .then(() => console.log("MongoDB connected"))
     .catch((err) => console.error(err))
+
+app.use('/api/', jobListingRoutes)
 
 // Run server on specified port
 app.listen(PORT, () => console.log(`App is listening on port: ${PORT}`))
