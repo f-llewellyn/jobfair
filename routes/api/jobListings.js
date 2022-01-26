@@ -20,10 +20,9 @@ router.get("/:id", async (req, res) => {
 
     try {
         const jobListings = await JobListing.findById(id)
-        if (!jobListings) throw new Error('Sorry, we could not find that listing')
         res.status(200).json(jobListings)
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(500).json({ message: "Sorry, we could not find that listing" })
     }
 })
 
@@ -32,7 +31,7 @@ router.post('/', async (req, res) => {
     const newJobListing = new JobListing(req.body)
     try {
         const jobListing = await newJobListing.save()
-        if (!jobListing) throw new Error('Something went wrong saving the jobListing')
+        if (!jobListing) throw new Error('Something went wrong saving the listing')
         res.status(200).json(jobListing)
     } catch (error) {
         res.status(500).json({ message: error.message })

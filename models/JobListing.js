@@ -10,12 +10,20 @@ const JobListingSchema = new Schema({
         required: true,
     },
     hours: {
-        type: String,
+        type: Number,
         required: true,
     },
     pay: {
-        type: String,
+        type: Number,
         required: true,
+    },
+    company: {
+        type: String,
+        required: true
+    },
+    applicationUrl: {
+        type: String,
+        required: true
     }
 })
 
