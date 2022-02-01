@@ -52,6 +52,7 @@ export default {
 		getFilters() {
 			return this.filters
 		},
+		
 		filteredListings() {
 			return this.data
 			.filter(listing => {

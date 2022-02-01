@@ -2,18 +2,24 @@
     <nav>
         <ul>
             <li>
-                <i class="fas fa-home"></i>
-                Home
+                <router-link class="link" :to="{ name: 'Home'}">
+                    <i class="fas fa-home"></i>
+                    Home
+                </router-link>
             </li>
 
             <li>
-                <i class="fas fa-search"></i>
-                Discover
+                <router-link :to="{ name: 'Discover'}">
+                    <i class="fas fa-search"></i>
+                    Discover
+                </router-link>
             </li>
 
             <li>
-                <i class="fas fa-plus-square"></i>
-                Post
+                <router-link :to="{ name: 'Post'}">
+                    <i class="fas fa-plus-square"></i>
+                    Post
+                </router-link>
             </li>
         </ul>
     </nav>
@@ -46,6 +52,12 @@
         text-transform: uppercase;
         font-weight: 500;
         color: var(--grey);
+    }
+
+    .router-link,
+    a {
+        color: var(--grey) !important;
+        text-decoration: none;
     }
 
 
