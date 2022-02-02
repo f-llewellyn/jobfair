@@ -7,7 +7,7 @@
 			v-for="listing in this.filteredListings"
 			:key="listing.id"
 			:title="listing.title"
-			:pay="listing.pay"
+			:pay="listing.pay.toFixed(2)"
 			:hours="listing.hours"
 			:location="listing.location"
             :employer="listing.company"
@@ -52,6 +52,7 @@ export default {
 		getFilters() {
 			return this.filters
 		},
+		
 		filteredListings() {
 			return this.data
 			.filter(listing => {
