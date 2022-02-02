@@ -38,8 +38,6 @@ export default {
         async submitRequest() {
             if (this.title && this.location && this.hours && this.pay && this.company && this.url) {
 
-                this.pay = this.pay * 100
-
                 let listing = {
                     title: this.title,
                     location: this.location,
