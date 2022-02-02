@@ -34,7 +34,7 @@ export default {
 	},
 	async mounted() {
 		try {
-			const response = await fetch("http://192.168.1.40:3000/api");
+			const response = await fetch("http://localhost:3000/api");
 			if (!response.ok) {
 				// get error message from body or default to response statusText
 				const error = (this.data && this.data.message) || response.statusText;
