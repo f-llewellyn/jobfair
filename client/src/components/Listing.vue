@@ -13,7 +13,7 @@
 				<p>Hours: {{ hours }}</p>
 				<p>Location: {{ location }}</p>
 				<p>Employer: {{ employer }}</p>
-				<a :href="applicationUrl" target="_"><button class="btn apply">Apply Now</button></a>
+				<a :href="`http://${applicationUrl}`" target="_"><button class="btn apply">Apply Now</button></a>
 			</div>
 		</div>
 	</div>
@@ -34,7 +34,6 @@ export default {
         "employer",
         "applicationUrl"
     ],
-	setup() {}
 };
 </script>
 
@@ -42,7 +41,7 @@ export default {
 .card {
 	width: 100%;
 	max-width: 350px;
-	min-width: max-content;
+	min-width: 280px;
 }
 
 .title {

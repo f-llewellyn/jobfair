@@ -1,7 +1,9 @@
 <template>
     <Header />
-    <Search @receiveFilters="checkFilters($event)"/>
-    <ListingContainer :filters="this.filters"/>
+    <div class="center">
+        <Search @receiveFilters="checkFilters($event)"/>
+        <ListingContainer :filters="this.filters"/>
+    </div>
 </template>
 
 <script>
@@ -32,6 +34,11 @@ export default {
 </script>
 
 <style scoped>
+    .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 </style>
 

@@ -1,8 +1,8 @@
 <template>
     <form action="#">
         <input v-model="filters.title" type="text" placeholder="SEARCH" class="search-bar">
-        <button class="btn search-btn" @click="shareFilters" ><i class="fas fa-search"></i></button>
-        <button class="btn filter" @click="filterDropdown = !filterDropdown"><i class="fas fa-filter"></i></button>
+        <button class="btn search-btn" @click.prevent="shareFilters" ><i class="fas fa-search"></i></button>
+        <button class="btn filter" @click.prevent="filterDropdown = !filterDropdown"><i class="fas fa-filter"></i></button>
 
         <div class="dropdowns" :class="{active: filterDropdown}">
             <div class="triangle"></div>
@@ -11,7 +11,6 @@
             <div class="range">
                 <p>Min Pay: £{{filters.pay}}</p>
                 <vue3-slider v-model="filters.pay" tooltip color="#05386B" track-color="#f4f4f4" width="100%" :max="25"/>
-                
             </div>
 
             <div class="range">
@@ -57,9 +56,9 @@ export default {
 
     form {
         position: relative;
-        width: 95%;
         max-width: 350px;
-        margin: 1rem auto;
+        margin: 1rem;
+        flex-basis: 100%;
         display: flex;
         justify-content: space-between;
     }
@@ -69,7 +68,7 @@ export default {
         background: var(--green);
         color: var(--light-grey);
         padding: .25rem;
-        min-width:  37px;
+        min-width: 37px;
     }
 
     .filter {

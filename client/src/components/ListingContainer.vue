@@ -85,23 +85,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
     .listings {
         display: flex;
         gap: 1.5rem;
         flex-direction: column;
         align-items: center;
-        margin: 1rem 0.5rem;
+        margin: 1rem;
         margin-bottom: 4rem;
-    }
-
-    .center {
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-        height: 300px;
-        max-width: 350px;
-        margin: 0 auto;
     }
 
     .err {
