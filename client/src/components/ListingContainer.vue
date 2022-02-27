@@ -1,9 +1,13 @@
 <template>
-	<div class="listings" :class="{center: this.filteredListings.length === 0}">
+	<div
+		class="listings"
+		:class="{ center: this.filteredListings.length === 0 }"
+	>
 		<!-- <p>{{ this.data }}</p> -->
 		<p v-if="this.filteredListings.length === 0" class="err">
 			Sorry, there don't seem to be any jobs at the moment <span>😕</span>
 		</p>
+		<!-- Display the listing element if there are more than 0 listings, create an element for each listing, and pass in the props -->
 		<Listing
 			v-else
 			v-for="listing in this.filteredListings"
@@ -30,9 +34,8 @@
 		data() {
 			const data = [];
 
-			return {data};
+			return { data };
 		},
-		methods: {},
 		async mounted() {
 			try {
 				const response = await fetch("http://localhost:3000/api");
@@ -42,9 +45,6 @@
 						(this.data && this.data.message) || response.statusText;
 					return Promise.reject(error);
 				}
-				// if ((await response.text()).length === 0) {
-				//     console.log("There's fuck all here")
-				// }
 				this.data = await response.json();
 			} catch (error) {
 				console.warn(error.message);
@@ -105,6 +105,7 @@
 	.err {
 		color: var(--grey);
 		max-width: 27ch;
+		text-align: center;
 	}
 
 	span {

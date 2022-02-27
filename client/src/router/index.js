@@ -4,41 +4,41 @@ import Discover from "../views/Discover.vue";
 import Post from "../views/Post.vue";
 
 const routes = [
-    {
-        path: "/",
-        name: "Home",
-        component: Home,
-        meta: {
-            title: "Home"
-        }
-    },
-    {
-        path: "/discover",
-        name: "Discover",
-        component: Discover,
-        meta: {
-            title: "Discover"
-        }
-    },
-    {
-        path: "/post",
-        name: "Post",
-        component: Post,
-        meta: {
-            title: "Post"
-        }
-    },
-]
+	{
+		path: "/",
+		name: "Home",
+		component: Home,
+		meta: {
+			title: "Home",
+		},
+	},
+	{
+		path: "/discover",
+		name: "Discover",
+		component: Discover,
+		meta: {
+			title: "Discover",
+		},
+	},
+	{
+		path: "/post",
+		name: "Post",
+		component: Post,
+		meta: {
+			title: "Post",
+		},
+	},
+];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
-})
+	history: createWebHistory(),
+	routes,
+});
 
 // Change page title
 router.beforeEach((to, from, next) => {
-    document.title = `JobFair | ${to.meta.title}`
-    next()
-})
+	document.title = `JobFair | ${to.meta.title}`;
+	next();
+});
 
 export default router;

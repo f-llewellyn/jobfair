@@ -1,5 +1,7 @@
+// Import relevant parts of mongoose
 const { Schema, model } = require('mongoose')
 
+// Init new schema
 const JobListingSchema = new Schema({
     title: {
         type: String,
@@ -27,6 +29,8 @@ const JobListingSchema = new Schema({
     }
 })
 
+// Save the schema as a model
 const JobListing = model('jobListing', JobListingSchema)
 
+// Export the model
 module.exports = JobListing

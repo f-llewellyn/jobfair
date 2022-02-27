@@ -16,7 +16,7 @@
 			<i class="fas fa-filter"></i>
 		</button>
 
-		<div class="dropdowns" :class="{active: filterDropdown}">
+		<div class="dropdowns" :class="{ active: filterDropdown }">
 			<div class="triangle"></div>
 			<input
 				v-model="filters.location"
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-	import {ref} from "vue";
+	import { ref } from "vue";
 	import slider from "vue3-slider";
 
 	export default {
@@ -69,7 +69,7 @@
 				location: "",
 			});
 			let filterDropdown = false;
-			return {filters, filterDropdown};
+			return { filters, filterDropdown };
 		},
 		methods: {
 			shareFilters() {

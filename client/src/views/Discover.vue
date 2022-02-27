@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import {ref} from "vue";
+	import { ref } from "vue";
 	import Header from "../components/Header.vue";
 	import Search from "../components/Search.vue";
 	import ListingContainer from "../components/ListingContainer.vue";
@@ -22,7 +22,7 @@
 		data() {
 			let filters = ref({});
 
-			return {filters};
+			return { filters };
 		},
 		methods: {
 			checkFilters(data) {
