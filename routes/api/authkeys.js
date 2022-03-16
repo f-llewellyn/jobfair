@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
 	try {
 		// Find all authkeys
 		const authKeys = await AuthKey.find();
-		if (!authKeys) throw new Error("No job listings");
+		if (!authKeys) throw new Error("No auth keys");
 		// Respond with status 200 (success)
 		res.status(200).json(authKeys);
 	} catch (error) {

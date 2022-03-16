@@ -88,15 +88,16 @@
 		},
 		methods: {
 			async checkAuth() {
+				// fetch the key value pairs from the database
 				const res = await fetch("http://localhost:3000/api/authkey");
 				const authKeys = await res.json();
 
-				console.log(authKeys);
-
+				// Filter through the keys to find the key that matshes the user given key
 				const jobKey = authKeys.filter(
 					(key) => key.key === this.authKey
 				);
 
+				// Checks that the user given key is not present in the database, and that the company given and the company stored on the server are matching
 				if (
 					jobKey.length == 0 ||
 					jobKey[0].company.toLowerCase() !==
@@ -146,6 +147,7 @@
 									this.company = null;
 									this.authKey = null;
 									this.url = null;
+									this.auth = false;
 								})
 								.catch((error) => {
 									console.error("Error:", error);
@@ -194,10 +196,11 @@
 
 	.submit-btn {
 		display: block;
-		background: var(--blue);
-		color: var(--light-grey);
+		background: var(--green);
+		color: var(--grey);
 		padding: 0.5rem;
 		margin-bottom: 3rem;
 		width: 100%;
+		font-weight: bold;
 	}
 </style>

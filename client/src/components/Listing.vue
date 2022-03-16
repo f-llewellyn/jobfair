@@ -121,8 +121,8 @@
 	}
 
 	.apply {
-		background-color: var(--blue);
-		color: var(--light-grey);
+		background-color: var(--green);
+		color: var(--grey);
 		padding: 0.5rem 1rem;
 		margin: 0.5rem 0;
 	}

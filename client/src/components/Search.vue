@@ -104,7 +104,7 @@
 	.filter {
 		position: relative;
 		aspect-ratio: 1/1;
-		background: var(--blue);
+		background: var(--grey);
 		color: var(--light-grey);
 		padding: 0.25rem;
 		min-width: 37px;
