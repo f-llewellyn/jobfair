@@ -2,13 +2,6 @@
 	<nav>
 		<ul>
 			<li>
-				<router-link :to="{ name: 'Home' }">
-					<i class="fas fa-home"></i>
-					Home
-				</router-link>
-			</li>
-
-			<li>
 				<router-link :to="{ name: 'Discover' }">
 					<i class="fas fa-search"></i>
 					Discover
@@ -54,9 +47,10 @@
 		color: var(--grey);
 	}
 
-	.router-link,
+	router-link,
 	a {
 		color: var(--grey) !important;
 		text-decoration: none;
+		font-weight: bold;
 	}
 </style>

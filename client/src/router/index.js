@@ -1,19 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 import Discover from "../views/Discover.vue";
 import Post from "../views/Post.vue";
 
 const routes = [
 	{
 		path: "/",
-		name: "Home",
-		component: Home,
-		meta: {
-			title: "Home",
-		},
-	},
-	{
-		path: "/discover",
 		name: "Discover",
 		component: Discover,
 		meta: {

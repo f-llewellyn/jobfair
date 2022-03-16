@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const jobListingRoutes = require("./routes/api/jobListings");
+const authKeyRoutes = require("./routes/api/authKeys");
 // Import PORT and mongoUri env variables
 const { PORT, mongoUri } = require("./config");
 
@@ -20,6 +21,8 @@ mongoose
 	.connect(mongoUri)
 	.then(() => console.log("MongoDB connected"))
 	.catch((err) => console.error(err));
+
+app.use("/api/authkey", authKeyRoutes);
 app.use("/api/", jobListingRoutes);
 
 // Run server on specified port

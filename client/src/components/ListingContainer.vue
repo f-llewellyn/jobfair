@@ -106,6 +106,8 @@
 		color: var(--grey);
 		max-width: 27ch;
 		text-align: center;
+		font-weight: bold;
+		font-size: 1.2rem;
 	}
 
 	span {

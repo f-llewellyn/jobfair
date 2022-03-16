@@ -48,6 +48,14 @@
 				v-model="company"
 				required
 			/>
+			<label for="company">Authorisation Key:</label>
+			<input
+				type="text"
+				name="company"
+				class="input-field"
+				v-model="authKey"
+				required
+			/>
 			<label for="url">Application URL:</label>
 			<input
 				type="text"
@@ -58,9 +66,8 @@
 			/>
 			<input
 				type="submit"
-				value="Submit"
-				@submit.prevent
-				@click="submitRequest"
+				value="SUBMIT"
+				@click.prevent="submitRequest"
 				class="btn submit-btn"
 			/>
 		</form>
@@ -75,48 +82,77 @@
 			Header,
 		},
 		data() {
-			let title, location, hours, pay, company, url;
-			return { title, location, hours, pay, company, url };
+			let title, location, hours, pay, company, authKey, url;
+			let auth = false;
+			return { title, location, hours, pay, company, authKey, url, auth };
 		},
 		methods: {
-			async submitRequest() {
+			async checkAuth() {
+				const res = await fetch("http://localhost:3000/api/authkey");
+				const authKeys = await res.json();
+
+				console.log(authKeys);
+
+				const jobKey = authKeys.filter(
+					(key) => key.key === this.authKey
+				);
+
 				if (
-					this.title &&
-					this.location &&
-					this.hours &&
-					this.pay &&
-					this.company &&
-					this.url
+					jobKey.length == 0 ||
+					jobKey[0].company.toLowerCase() !==
+						this.company.toLowerCase()
 				) {
-					this.url = this.url.replace("https://", "");
-					this.url = this.url.replace("http://", "");
-
-					let listing = {
-						title: this.title,
-						location: this.location,
-						hours: this.hours,
-						pay: this.pay,
-						company: this.company,
-						applicationUrl: this.url,
-					};
-
-					fetch("http://localhost:3000/api", {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-						},
-						body: JSON.stringify(listing),
-					})
-						.then((response) => response.json())
-						.then((data) => {
-							console.log("Success:", data);
-						})
-						.catch((error) => {
-							console.error("Error:", error);
-						});
-				} else {
-					alert("Please fill all fields");
+					alert(
+						"Authorisation key is invalid, as it does not exist or does not match the company. Please try again 😁"
+					);
+				} else if (
+					jobKey[0].company.toLowerCase() ===
+					this.company.toLowerCase()
+				) {
+					return (this.auth = true);
 				}
+			},
+
+			async submitRequest() {
+				this.checkAuth()
+					.then(() => {
+						if (this.auth === true) {
+							this.url = this.url.replace("https://", "");
+							this.url = this.url.replace("http://", "");
+
+							let listing = {
+								title: this.title,
+								location: this.location,
+								hours: this.hours,
+								pay: this.pay,
+								company: this.company,
+								applicationUrl: this.url,
+							};
+
+							fetch("http://localhost:3000/api", {
+								method: "POST",
+								headers: {
+									"Content-Type": "application/json",
+								},
+								body: JSON.stringify(listing),
+							})
+								.then((response) => response.json())
+								.then((data) => {
+									console.log("Success:", data);
+									this.title = null;
+									this.location = null;
+									this.hours = null;
+									this.pay = null;
+									this.company = null;
+									this.authKey = null;
+									this.url = null;
+								})
+								.catch((error) => {
+									console.error("Error:", error);
+								});
+						}
+					})
+					.catch((err) => console.log(err));
 			},
 		},
 	};
