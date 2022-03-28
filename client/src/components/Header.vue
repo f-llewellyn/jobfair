@@ -1,6 +1,6 @@
 <template>
 	<header>
-		<img src="../assets/JobFair-text.svg" />
+		<img src="/logo-text.svg" alt="jobfair logo" />
 	</header>
 </template>
 
