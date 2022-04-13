@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const jobListingRoutes = require("./routes/api/jobListings");
-const authKeyRoutes = require("./routes/api/authKeys");
+const authKeyRoutes = require("./routes/api/authkeys");
 const path = require("path");
 // Import PORT and mongoUri env variables
 const { PORT, mongoUri } = require("./config");
