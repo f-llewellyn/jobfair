@@ -8,6 +8,7 @@
 		"https-preview": "serve dist"
 	},
 	"dependencies": {
+		"jobfair": "file:..",
 		"vue": "^3.2.23",
 		"vue-router": "^4.0.12",
 		"vue3-slider": "^1.6.8"
