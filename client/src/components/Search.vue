@@ -15,7 +15,7 @@
 			</svg>
 		</button>
 		<button
-			class="btn filter"
+			class="pointer btn filter"
 			@click.prevent="filterDropdown = !filterDropdown"
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
