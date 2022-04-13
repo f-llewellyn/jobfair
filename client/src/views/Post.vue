@@ -89,7 +89,7 @@
 		methods: {
 			async checkAuth() {
 				// fetch the key value pairs from the database
-				const res = await fetch("http://localhost:3000/api/authkey");
+				const res = await fetch("/api/authkey");
 				const authKeys = await res.json();
 
 				// Filter through the keys to find the key that matshes the user given key
@@ -130,7 +130,7 @@
 								applicationUrl: this.url,
 							};
 
-							fetch("http://localhost:3000/api", {
+							fetch("/api", {
 								method: "POST",
 								headers: {
 									"Content-Type": "application/json",
