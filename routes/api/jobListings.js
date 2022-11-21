@@ -8,7 +8,8 @@ router.get("/", async (req, res) => {
 	try {
 		// Find all joblistings
 		const jobListings = await JobListing.find();
-		if (!jobListings) throw new Error("No job listings");
+		if (!jobListings || jobListings.length <= 0)
+			throw new Error("No job listings");
 		// Respond with status 200 (success)
 		res.status(200).json(jobListings);
 	} catch (error) {

@@ -19,7 +19,9 @@ app.use(bodyParser.json());
 
 // Connect to mongoDB
 mongoose
-	.connect(mongoUri)
+	.connect(mongoUri, {
+		dbName: "myFirstDatabase",
+	})
 	.then(() => console.log("MongoDB connected"))
 	.catch((err) => console.error(err));
 

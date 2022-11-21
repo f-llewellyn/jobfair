@@ -38,7 +38,7 @@
 		},
 		async mounted() {
 			try {
-				const response = await fetch("/api");
+				const response = await fetch("http://localhost:3000/api/");
 				if (!response.ok) {
 					// get error message from body or default to response statusText
 					const error =
